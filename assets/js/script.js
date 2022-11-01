@@ -53,8 +53,8 @@ function getWeatherInfo(cityname) {
       var iconDisplay = [];
       var iconsUrls = [];
 
-      for (i = 0; i < 6; i++) {
-        iconDisplay[i] = response.daily[i].weather[0].icon;
+      for (i = 1; i < 6; i++) {
+        iconDisplay[i] = response.weather[0].icon;
       }
 
       iconDisplay = iconDisplay.filter((item) => item);
@@ -67,9 +67,10 @@ function getWeatherInfo(cityname) {
       }
 
       //finding max Temp and then looping through the five days to display it
+      console.log(response.main);
       var maxTemp = [];
       for (var i = 0; i < 6; i++) {
-        maxTemp[i] = parseInt(response.daily[i].temp.max) + "°F";
+        maxTemp[i] = parseInt(response.main[i].temp_max) + "°F";
       }
 
       maxTemp = maxTemp.filter((item) => item);
@@ -106,16 +107,7 @@ function getWeatherInfo(cityname) {
 function displayCity() {
   $(".btn").click(function () {
     var Namecity = $(".Inputcity").val();
-    // console.log(cityName);
-    // searchCity(cityName);
     getWeatherInfo(Namecity);
-    // console.log("clicked");
-    // console.log($('.Inputcity').val());
-
-    //add city name to local storage on Save button
-    //Historysearch.push(cityName);
-    //console.log(Historysearch);
-    //localStorage.setItem('cities',Historysearch);
     createCityButton(Namecity);
     $(".Inputcity").val("");
 
@@ -138,7 +130,6 @@ function createCityButton(Namecity) {
     var listButton = document.createElement("li");
     listButton.appendChild(cityButton);
     Listbutton.appendChild(listButton);
-    // getWeatherInfo(Namecity);
   } else {
     alert("please enter a City Name");
   }
