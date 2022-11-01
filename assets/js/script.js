@@ -51,9 +51,9 @@ function getWeatherInfo(cityname) {
       var iconDisplay = [];
       var iconsUrls = [];
 
-      // for (i = 1; i < 10; i++) {
-      //   iconDisplay[i] = response.list[i].weather[i].icon;
-      // }
+      for (i = 1; i < 10; i++) {
+        iconDisplay[i] = response.list[i].weather[0].icon;
+      }
 
       iconDisplay = iconDisplay.filter((item) => item);
       for (i = 0; i < iconDisplay.length; i++) {
@@ -92,7 +92,7 @@ function getWeatherInfo(cityname) {
       var fiveDayHumidity = [];
 
       for (var i = 0; i < 6; i++) {
-        fiveDayHumidity[i] = response.main[i].humidity;
+        fiveDayHumidity[i] = response.list[i].main.humidity;
       }
 
       fiveDayHumidity = fiveDayHumidity.filter((item) => item);
