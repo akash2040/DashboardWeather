@@ -7,7 +7,7 @@ function getWeatherInfo(cityname) {
   var Url =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     cityname +
-    "&units=imperial&appid=7f056f2923c93db54124cd78a1bbb57b";
+    "&appid=7f056f2923c93db54124cd78a1bbb57b";
   fetch(
     // Make a fetch request using city
     Url
@@ -38,7 +38,7 @@ function getWeatherInfo(cityname) {
           latitude +
           "&lon=" +
           longitude +
-          "&exclude=alerts,minutely,hourly&units=imperial&appid=f6740994883ab44d52a7d70b9244694d"
+          "&exclude=alerts,minutely,hourly&units=imperial&appid=7f056f2923c93db54124cd78a1bbb57b"
       );
     })
     .then(function (response) {
@@ -46,16 +46,14 @@ function getWeatherInfo(cityname) {
       return response.json();
     })
     .then(function (response) {
-      console.log(response);
-      // send response data to displayWeather function for final display
-      // displayWeather(response);
+      console.log(response.list);
 
       var iconDisplay = [];
       var iconsUrls = [];
 
-      for (i = 1; i < 6; i++) {
-        iconDisplay[i] = response.main.weather[0].icon;
-      }
+      // for (i = 1; i < 10; i++) {
+      //   iconDisplay[i] = response.list[i].weather[i].icon;
+      // }
 
       iconDisplay = iconDisplay.filter((item) => item);
       for (i = 0; i < iconDisplay.length; i++) {
@@ -67,10 +65,10 @@ function getWeatherInfo(cityname) {
       }
 
       //finding max Temp and then looping through the five days to display it
-      console.log(response.main);
+      console.log(response);
       var maxTemp = [];
       for (var i = 0; i < 6; i++) {
-        maxTemp[i] = parseInt(response.list.main[i].temp_max) + "°F";
+        maxTemp[i] = parseInt(response.list[i].main.temp_max) + "°F";
       }
 
       maxTemp = maxTemp.filter((item) => item);
@@ -81,7 +79,7 @@ function getWeatherInfo(cityname) {
       //finding min Temp and then looping through the five days to display it
       var minTemp = [];
       for (var i = 0; i < 6; i++) {
-        minTemp[i] = parseInt(response.list.main[i].temp_min) + "°F";
+        minTemp[i] = parseInt(response.list[i].main.temp_min) + "°F";
       }
       minTemp = minTemp.filter((item) => item);
       for (i = 0; i < minTemp.length; i++) {
@@ -94,7 +92,7 @@ function getWeatherInfo(cityname) {
       var fiveDayHumidity = [];
 
       for (var i = 0; i < 6; i++) {
-        fiveDayHumidity[i] = response.list.main[i].humidity;
+        fiveDayHumidity[i] = response.main[i].humidity;
       }
 
       fiveDayHumidity = fiveDayHumidity.filter((item) => item);
