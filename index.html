@@ -1,105 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Dashboard</title>
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <body>
-    <header class="jumbotron bg-secondary mb-3">
-      <h1 class="display-3 text-center">Weather Dashboard</h1>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css" />
 
-    <div class="container">
-      <div class="row">
-        <div class="col-4" id="sidenav">
-          <div class="card">
-            <div class="card-header">
-              <h2>Pick a City</h2>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-              <input class="cityName" placeholder="Please Select a City" />
-              <br>
-              <button type="button" href="#" class="btn btn-primary">Search</button>
-                </div>
+  <title>Weather Dashboard</title>
+</head>
+<body>
+  <header class="jumbotron bg-primary">
+    <h1 class="display-3 text-center">Weather Dashboard</h1>
+  </header>
 
-            <div class="history justify-content-center">
-              <h3>Search History</h3>
-              <div id="listsearch"></div>
-            </div>
+  <div class ="container">
+    <div class ="row">
+      <div class="col-4" id="barside">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+          <h2>Pick a City!</h2>
           </div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <input class="Inputcity"placeholder="Please Select a City"/>
+            <hr/>
+            <a href="#" class="btn btn-primary">Search Button</a>
           </div>
-
-          <div class="col-8">
-            <div class="row weatherDisplay">
-              <h2 class="city">City</h2>
-              
-              <time class="timeId align-content-center">Date</time>
-              <img id="icon" />
-            </div>
-            
-              <hr />
-             
-              <div class="row fiveDay">
-                <div class="col-md-12">
-                  <h2>Five day forecast</h2>
-                </div>
-                <hr />
-                <div class="col-md-4 card fiveCard">
-                  <div class="5title" id="day1">Date</div>
-                  <img class="icon" id="icon1" />
-                  <p id="highTemp1">High:</p>
-                  <p id="lowTemp1">Low:</p>
-                  <p id="humidityDay1">Humidity:</p>
-                </div>
-                <div class="col-md-4 card fiveCard">
-                  <div calss="5title" id="day2">Date</div>
-                  <img class="icon" id="icon2" />
-                  <p id="highTemp2">High:</p>
-                  <p id="lowTemp2">Low:</p>
-                  <p id="humidityDay2">Humidity:</p>
-                </div>
-                <div class="col-md-4 card fiveCard">
-                  <div calss="5title" id="day3">Date</div>
-                  <img class="icon" id="icon3" />
-                  <p id="highTemp3">High:</p>
-                  <p id="lowTemp3">Low:</p>
-                  <p id="humidityDay3">Humidity:</p>
-                </div>
-                <div class="col-md-4 card fiveCard">
-                  <div calss="5title" id="day4">Date</div>
-                  <img class="icon" id="icon4" />
-                  <p id="highTemp4">High:</p>
-                  <p id="lowTemp4">Low:</p>
-                  <p id="humidityDay4">Humidity:</p>
-                </div>
-                <div class="col-md-4 card fiveCard">
-                  <div calss="5title" id="day5">Date</div>
-                  <img class="icon" id="icon5" />
-                  <p id="highTemp5">High:</p>
-                  <p id="lowTemp5">Low:</p>
-                  <p id="humidityDay5">Humidity:</p>
-                </div>
-              </div>
-            </div>
+          <br/>
+          <div class="Historysearch justify-content-center">
+            <h3>Search History</h3>
+            <div   id="Listbutton"></div>
+            <hr/>
+            <button class = "Btnclear text-center bg-dark text-white">Clear History</button>
           </div>
         </div>
       </div>
+      <div class="col-8">
+        <div class = "row Displayweather">
+          <h2 class="Namecity">City</h2>
+          <hr/>
+          
+          <img id="">
+        </div>
+        <div class="row weatherInfoCurrent">
+          <div class="col-12">
+            <p class="Tempcurrent">Temp</p>
+            <hr/>
+            <p class="">Wind</p>
+            <hr/>
+            <p class="currentHumidity">Humidity</p>
+          </div>
+          <hr/>
+          <hr/>
+        <div class="row fiveDay">
+          <div class="col-md-12">
+            <h2>Five day forecast</h2>
+          </div>
+        <hr/>
+          <div class="col-md-4 card fiveCard">
+            <div calss="5title" id="day1">Date</div>
+            <img class="icon" id="icon1">
+            <p id="highTemp1">High: </p>
+            <p id="lowTemp1">Low: </p>
+            <p id="humidityDay1">Humidity: </p>
+          </div>
+          <div class="col-md-4 card fiveCard">
+            <div calss="5title" id="day2">Date</div>
+            <img class="icon" id="icon2">
+            <p id="highTemp2">High: </p>
+            <p id="lowTemp2">Low: </p>
+            <p id="humidityDay2">Humidity: </p>
+          </div>
+          <div class="col-md-4 card fiveCard">
+            <div calss="5title" id="day3">Date</div>
+            <img class="icon" id="icon3">
+            <p id="highTemp3">High: </p>
+            <p id="lowTemp3">Low: </p>
+            <p id="humidityDay3">Humidity: </p>
+          </div>
+          <div class="col-md-4 card fiveCard">
+            <div calss="5title" id="day4">Date</div>
+            <img class="icon" id="icon4">
+            <p id="highTemp4">High: </p>
+            <p id="lowTemp4">Low: </p>
+            <p id="humidityDay4">Humidity: </p>
+          </div>
+          <div class="col-md-4 card fiveCard">
+            <div calss="5title" id="day5">Date</div>
+            <img class="icon" id="icon5">
+            <p id="highTemp5">High: </p>
+            <p id="lowTemp5">Low: </p>
+            <p id="humidityDay5">Humidity: </p>
+          </div>
+
+        </div>
+        </div>
+        </div>
+      </div>
     </div>
-  </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <scrip src="./assets/js/script.js"></scrip>
+    
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src ="./assets/js/script.js"></script>
+</body>
+
 </html>
+
