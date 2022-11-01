@@ -24,14 +24,14 @@ function getWeatherInfo(cityname) {
       $(".Namecity").text(cityname);
 
       $(".Tempcurrent").text("Temperature: " + response.main.temp + " °F");
-      $(".Windcurrent").text("Wind: " + response.wind.speed + " MPH");
+      $(".Windcurrent").text("Wind: " + response.wind.deg + " MPH");
       $(".currentHumidity").text("Humidity: " + response.main.humidity + " %");
-      $("#Iconweather").attr({ src: iconURl, alt: "Current Weather Icon" });
+      $("#Iconweather").attr({ src: iconURl });
 
       console.log(response);
       var latitude = response.coord.lat;
       var longitude = response.coord.lon;
-
+      // console.log(latitude);
       // Return a fetch request to the OpenWeather using longitude and latitude from pervious fetch
       return fetch(
         "https://api.openweathermap.org/data/2.5/forecast?lat=" +
@@ -54,7 +54,7 @@ function getWeatherInfo(cityname) {
       var iconsUrls = [];
 
       for (i = 1; i < 6; i++) {
-        iconDisplay[i] = response.weather[0].icon;
+        iconDisplay[i] = response.main.weather[0].icon;
       }
 
       iconDisplay = iconDisplay.filter((item) => item);
@@ -70,7 +70,7 @@ function getWeatherInfo(cityname) {
       console.log(response.main);
       var maxTemp = [];
       for (var i = 0; i < 6; i++) {
-        maxTemp[i] = parseInt(response.main[i].temp_max) + "°F";
+        maxTemp[i] = parseInt(response.list.main[i].temp_max) + "°F";
       }
 
       maxTemp = maxTemp.filter((item) => item);
@@ -81,7 +81,7 @@ function getWeatherInfo(cityname) {
       //finding min Temp and then looping through the five days to display it
       var minTemp = [];
       for (var i = 0; i < 6; i++) {
-        minTemp[i] = parseInt(response.daily[i].temp.min) + "°F";
+        minTemp[i] = parseInt(response.list.main[i].temp_min) + "°F";
       }
       minTemp = minTemp.filter((item) => item);
       for (i = 0; i < minTemp.length; i++) {
@@ -94,7 +94,7 @@ function getWeatherInfo(cityname) {
       var fiveDayHumidity = [];
 
       for (var i = 0; i < 6; i++) {
-        fiveDayHumidity[i] = response.daily[i].humidity;
+        fiveDayHumidity[i] = response.list.main[i].humidity;
       }
 
       fiveDayHumidity = fiveDayHumidity.filter((item) => item);
